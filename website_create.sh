@@ -37,4 +37,7 @@ sudo nginx -t
 sudo systemctl restart nginx
 . certbot.sh
 echo "${_MAGENTA}Installation Progress....WEBSITE SETUP :: Completed${_RESET}"
-
+echo "${_RED}If you wish to deploy MySQL Database system, please do the following${_RESET}"
+echo
+echo "${_RED}To install MySQL database, run \"./maria_db.sh\"${_RESET}"
+echo
