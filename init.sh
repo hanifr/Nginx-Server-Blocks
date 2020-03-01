@@ -1,6 +1,6 @@
 #!/bin/bash
 # Colors
-_CYAN=`tput setaf 1`
+_RED=`tput setaf 1`
 _GREEN=`tput setaf 2`
 _YELLOW=`tput setaf 3`
 _BLUE=`tput setaf 4`
@@ -27,7 +27,7 @@ if [ ! -d $HOME ]; then
   exit 1
 fi
 
-echo "${_CYAN}Installation Progress....${_RESET}"
+echo "${_GREEN}Installation Progress....${_RESET}"
  sudo apt-get update
 # Adding privilage to setup files
 chmod +x $HOME/nginx-server-blocks/nginx.sh

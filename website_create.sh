@@ -17,7 +17,7 @@ sudo chmod -R 755 /var/www/example.com
 cat >/var/www/example.com/html/index.html <<EOL
 <html>
     <head>
-        <title>Welcome to Example.com!</title>
+        <title>Welcome to example.com!</title>
     </head>
     <body>
         <h1>Success!  The example.com server block is working!</h1>
@@ -25,7 +25,7 @@ cat >/var/www/example.com/html/index.html <<EOL
 </html>
 EOL
 
-cat >/etc/nginx/sites-available/example.com <<EOL
+cat >$HOME/Nginx-Server-Blocks/example.com.html <<EOL
  server {
             listen 80;
             listen [::]:80;
@@ -49,7 +49,7 @@ cat >/etc/nginx/sites-available/example.com <<EOL
             }
         }
 EOL
-
+sudo cp $HOME/Nginx-Server-Blocks/example.com.html /etc/nginx/sites-available/example.com
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 echo
 
