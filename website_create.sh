@@ -58,7 +58,14 @@ sudo nginx -t
 
 # Restart Nginx to enable the configuration changes   
 sudo systemctl restart nginx
-. certbot.sh
+echo "${_GREEN}Also Change example.com to your domain_name \"sudo nano certbot.sh\"${_RESET}"
+echo
+echo "${_GREEN}Once finish, hit ctrl + o to save and ctrl + x to exit${_RESET}"
+echo
+echo "${_GREEN}To secure your website, run \"./certbot.sh.sh\"${_RESET}"
+echo
+
+#. certbot.sh
 
 echo "${_GREEN}Installation Progress....WEBSITE SETUP :: Completed${_RESET}"
 echo 
