@@ -29,20 +29,6 @@ cat >/var/www/example.com/html/index.html <<EOL
 EOL
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 echo
-echo "${_RED}Avoid any possible hash bucket memory problem do the following${_RESET}"
-echo
-echo "${_RED}Execute \"sudo nano /etc/nginx/nginx.conf\"${_RESET}"
-echo
-echo "${_RED}Uncomment the line \"server_names_hash_bucket_size\"${_RESET}"
-echo " ..."
-echo " http {"
-echo "     ..."
-echo "      \"server_names_hash_bucket_size 64;\""
-echo "     ..."
-echo "    }"
-echo
-echo "${_RED}Once finish, hit ctrl + o to save and ctrl + x to exit${_RESET}"
-echo
 
 # Check if the Nginx configurations is OK no errors
 sudo nginx -t
