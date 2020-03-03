@@ -10,30 +10,34 @@ _RESET=`tput sgr0`
 
 echo "${_GREEN}Installation Progress....WEBSITE SETUP :: Started${_RESET}"
 # Please input your your domain name
-sudo mkdir -p /var/www/example.com/html
-sudo chown -R $USER:$USER /var/www/example.com/html
-sudo chmod -R 755 /var/www/example.com
+echo "${_CYAN}Please Enter your domain name${_RESET} $_domain"
+                read -p "Enter yes or no: " _domain
+echo "${_CYAN}You have entered $_domain for your domain name${_RESET}"
 
-cat >/var/www/example.com/html/index.html <<EOL
+sudo mkdir -p /var/www/$_domain/html
+sudo chown -R $USER:$USER /var/www/$_domain/html
+sudo chmod -R 755 /var/www/$_domain
+
+cat >/var/www/$_domain/html/index.html <<EOL
 <html>
     <head>
-        <title>Welcome to example.com!</title>
+        <title>Welcome to $_domain!</title>
     </head>
     <body>
-        <h1>Success!  The example.com server block is working!</h1>
+        <h1>Success!  The $_domain server block is working!</h1>
     </body>
 </html>
 EOL
 
-cat >$HOME/Nginx-Server-Blocks/example.com.html <<EOL
+cat >$HOME/Nginx-Server-Blocks/$_domain.html <<EOL
  server {
             listen 80;
             listen [::]:80;
         
-            root /var/www/example.com/html;
+            root /var/www/$_domain/html;
             index index.php index.html index.htm index.nginx-debian.html;
         
-            server_name example.com www.example.com;
+            server_name $_domain www.$_domain;
         
             location / {
                     try_files $uri $uri/ =404;
@@ -49,8 +53,8 @@ cat >$HOME/Nginx-Server-Blocks/example.com.html <<EOL
             }
         }
 EOL
-sudo cp $HOME/Nginx-Server-Blocks/example.com.html /etc/nginx/sites-available/example.com
-sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+sudo cp $HOME/Nginx-Server-Blocks/$_domain.html /etc/nginx/sites-available/$_domain
+sudo ln -s /etc/nginx/sites-available/$_domain /etc/nginx/sites-enabled/
 echo
 
 # Check if the Nginx configurations is OK no errors
@@ -58,7 +62,7 @@ sudo nginx -t
 
 # Restart Nginx to enable the configuration changes   
 sudo systemctl restart nginx
-echo "${_GREEN}Also Change example.com to your domain_name \"sudo nano certbot.sh\"${_RESET}"
+echo "${_GREEN}Also Change $_domain to your domain_name \"sudo nano certbot.sh\"${_RESET}"
 echo
 echo "${_GREEN}Once finish, hit ctrl + o to save and ctrl + x to exit${_RESET}"
 echo
