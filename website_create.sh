@@ -11,7 +11,7 @@ _RESET=`tput sgr0`
 echo "${_GREEN}Installation Progress....WEBSITE SETUP :: Started${_RESET}"
 # Please input your your domain name
 echo "${_CYAN}Please Enter your domain name${_RESET} $_domain"
-                read -p "Enter yes or no: " _domain
+                read -p "Enter your Domain: " _domain
 echo "${_CYAN}You have entered $_domain for your domain name${_RESET}"
 
 sudo mkdir -p /var/www/$_domain/html

@@ -13,7 +13,7 @@ sudo ufw allow 'Nginx Full'
 sudo sudo ufw delete allow 'Nginx HTTP'
 
 echo "${_CYAN}Please Enter your domain name${_RESET} $_domain"
-                read -p "Enter yes or no: " _domain
+                read -p "Enter your Domain: " _domain
 echo "${_CYAN}You have entered $_domain for your domain name${_RESET}"
 
 # Get Let's Encrypt certificate for example.com
